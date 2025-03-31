@@ -3,18 +3,19 @@
 @author: demiust
 """
 
+import argparse
+import os
+import pickle
+
+import numpy as np
+import tensorflow as tf
+
+from sklearn.preprocessing import LabelEncoder
+
+from models.joint_bert import JointBertModel
 from readers.goo_format_reader import Reader
 from vectorizers.bert_vectorizer import BERTVectorizer
 from vectorizers.tags_vectorizer import TagsVectorizer
-from models.joint_bert import JointBertModel
-
-import argparse
-from sklearn.preprocessing import LabelEncoder
-import numpy as np
-import os
-import pickle
-import tensorflow as tf
-
 
 # read command-line parameters
 parser = argparse.ArgumentParser('Training the Joint BERT NLU model')
@@ -39,6 +40,7 @@ print('train_data_folder_path:', train_data_folder_path)
 
 ## this line is to disable gpu
 #os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+
 
 tf.compat.v1.random.set_random_seed(7)
 
